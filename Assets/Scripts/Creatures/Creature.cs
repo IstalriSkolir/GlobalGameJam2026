@@ -3,9 +3,9 @@ using UnityEngine;
 public abstract class Creature : MonoBehaviour
 {
     [SerializeField, Header("Creature Properties")]
-    private int health;
+    internal int health;
     [SerializeField]
-    private int maxHealth;
+    internal int maxHealth;
 
     public virtual void UpdateHealthByValue(int change, bool decrease = true)
     {
