@@ -49,6 +49,25 @@ public class PlayerController : MonoBehaviour
         else {
             animator.SetBool("PlayerMoving", false);
         }
+
+        if(Input.GetButtonDown("Jump")){
+            animator.SetBool("Blocking", true);
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            animator.SetBool("Blocking", false);
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            animator.SetTrigger("Light Attack");
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            animator.SetTrigger("Heavy Attack");
+        }
     }
 
     void FixedUpdate()
