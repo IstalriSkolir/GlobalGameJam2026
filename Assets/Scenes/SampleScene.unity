@@ -21549,13 +21549,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191610113}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.000000014901163, z: -0.38268366, w: 0.92387944}
-  m_LocalPosition: {x: 2.532, y: 2.525, z: -0.255}
-  m_LocalScale: {x: 3.9380858, y: 3.675974, z: 0.8598554}
+  m_LocalRotation: {x: -0.009842128, y: 0.004076749, z: -0.382662, w: 0.92382705}
+  m_LocalPosition: {x: 1.503, y: 1.496, z: -0.251}
+  m_LocalScale: {x: 3.9380858, y: 2.0046923, z: 0.8598554}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5779471562176722692}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: -0.863, y: 0.863, z: -45.007}
 --- !u!65 &191610115
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -76691,7 +76691,19 @@ MonoBehaviour:
   explosion: {fileID: 8560110128451120685, guid: 4fc4c8c661e0b40419091f90eb60c8cd, type: 3}
   m_MyEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1953337150}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &3469287837280751559
 BoxCollider:
   m_ObjectHideFlags: 0
