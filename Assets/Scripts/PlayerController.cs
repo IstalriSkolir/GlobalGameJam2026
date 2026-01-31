@@ -97,4 +97,15 @@ public class PlayerController : MonoBehaviour
         animator.ResetTrigger("Light Attack");
         animator.ResetTrigger("Heavy Attack");
     }
+
+    //public void LightAttack() {
+    //    bool m_HitDetect;
+
+    //    m_HitDetect = Physics.BoxCast(m_Collider.bounds.center, transform.localScale * 0.5f, transform.forward, out m_Hit, transform.rotation, 1.0f);
+    //    if (m_HitDetect)
+    //    {
+    //        //Output the name of the Collider your Box hit
+    //        Debug.Log("Hit : " + m_Hit.collider.name);
+    //    }
+    //}
 }
