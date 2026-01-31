@@ -47,12 +47,16 @@ public class PlayerHealth : Creature
 
     public override void UpdateHealthByValue(int change, bool decrease = true)
     {
-        if (!playerController.blocking)
+        if (decrease && !playerController.blocking)
         {
             base.UpdateHealthByValue(change, decrease);
             regenActive = false;
             regenTimer = regenDelayTime;
             regenTick = regenTickDelay;
+        }
+        else if(!decrease)
+        {
+            base.UpdateHealthByValue(change, decrease);
         }
     }
 }
