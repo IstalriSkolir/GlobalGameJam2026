@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7680684761399362049}
   - component: {fileID: 2478105704462914772}
   m_Layer: 0
-  m_Name: ArrowParticleEffect
+  m_Name: ArrowBurstParticleEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
