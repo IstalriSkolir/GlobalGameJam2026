@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float m_Speed = 5f;
+    public float lookSpeedX = 2.5f;
+    public float lookSpeedY = 2.5f;
 
     public Transform playerCamera;
     public Animator animator;
@@ -23,8 +25,8 @@ public class PlayerController : MonoBehaviour
         Vector3 bodyLook = new Vector3(0, Input.GetAxis("Mouse X"), 0);
         Vector3 cameraLook = new Vector3(-Input.GetAxis("Mouse Y"), 0, 0);
 
-        transform.Rotate(bodyLook);
-        playerCamera.Rotate(cameraLook);
+        transform.Rotate(bodyLook * lookSpeedY);
+        playerCamera.Rotate(cameraLook * lookSpeedX);
 
         //animator.SetFloat("LookX", Input.GetAxis("Mouse X"));
         //animator.SetFloat("LookY", Input.GetAxis("Mouse Y"));
@@ -37,7 +39,9 @@ public class PlayerController : MonoBehaviour
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
 
-        animator.SetFloat("HorizontalMove", horizontalMove);
+        //float smoothedMove = Mathf.SmoothDamp(transform.position.y, verticalMove, ref yVelocity, smoothTime);
+
+        animator.SetFloat("HorizontalMove", horizontalMove, 0.5f, Time.deltaTime);
         animator.SetFloat("VerticalMove", verticalMove);
 
         movementVector = (transform.forward * verticalMove + transform.right * horizontalMove);
