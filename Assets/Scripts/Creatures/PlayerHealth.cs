@@ -14,12 +14,18 @@ public class PlayerHealth : Creature
     private float regenTick;
     [SerializeField]
     private int regenValue;
-    [SerializeField]
+
+    [SerializeField, Header("Player Health Gameobjects & Components")]
     private PlayerController playerController;
+    [SerializeField]
+    private GameObject bossResetObj;
+
+    private BossReset reset;
 
     private void Start()
     {
         regenTimer = regenDelayTime;
+        reset = bossResetObj.GetComponent<BossReset>();
     }
 
     private void Update()
@@ -42,7 +48,12 @@ public class PlayerHealth : Creature
 
     internal override void death()
     {
-        
+        RunBossReset();
+    }
+
+    public void RunBossReset()
+    {
+        reset.ResetBosses();
     }
 
     public override void UpdateHealthByValue(int change, bool decrease = true)

@@ -15019,6 +15019,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b8dc3f8822d361c4ca4742eb9cf73a83, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8dc3f8822d361c4ca4742eb9cf73a83, type: 3}
       propertyPath: m_TagString
       value: Boss
       objectReference: {fileID: 0}
@@ -15099,6 +15103,7 @@ MonoBehaviour:
   jumpTarget: {x: 0, y: 0, z: 0}
   jellyAnimator: {fileID: 7998840713632651963}
   childTransform: {fileID: 8844712787013640492}
+  parentTransform: {fileID: 0}
   childRigibody: {fileID: 214351719936005436}
 --- !u!195 &3827589456157603180
 NavMeshAgent:
