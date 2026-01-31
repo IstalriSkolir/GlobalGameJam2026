@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public abstract class Boss : Creature
 {
@@ -15,6 +16,8 @@ public abstract class Boss : Creature
     internal GameObject player;
     [SerializeField]
     internal GameObject explosion;
+
+    public UnityEvent m_MyEvent;
 
     internal PlayerHealth playerHealth;
 
@@ -37,6 +40,7 @@ public abstract class Boss : Creature
     internal override void death()
     {
         animator.SetTrigger("Death");
+        m_MyEvent.Invoke();
     }
 
     public virtual void StopAgent()
