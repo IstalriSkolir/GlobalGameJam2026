@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GelatinousCube : Boss
 {
@@ -26,7 +27,11 @@ public class GelatinousCube : Boss
     [SerializeField, Header("Gelatinous Cube Gameobjects & Components")]
     private Transform childTransform;
     [SerializeField]
+    private Transform parentTransform;
+    [SerializeField]
     private Rigidbody childRigibody;
+    [SerializeField]
+    private UnityEvent endOfFightEvent;
 
     internal override void Start()
     {
