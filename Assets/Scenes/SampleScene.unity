@@ -100097,6 +100097,7 @@ MonoBehaviour:
   regenTick: 0
   regenValue: 0
   playerController: {fileID: 1661371817}
+  bossResetObj: {fileID: 0}
 --- !u!1 &1663876722
 GameObject:
   m_ObjectHideFlags: 0
@@ -100550,9 +100551,10 @@ GameObject:
   - component: {fileID: 1685608424}
   - component: {fileID: 1685608423}
   - component: {fileID: 1685608425}
+  - component: {fileID: 1685608426}
   m_Layer: 0
   m_Name: MechArrow Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100616,7 +100618,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   player: {fileID: 0}
   explosion: {fileID: 0}
-  distanceBuffer: 1
+  distanceBuffer: 3
   attackDelay: 0.5
   arrowPerAttackPerSystem: 3
   attackTimeBeforeRetreat: 5
@@ -100669,6 +100671,27 @@ NavMeshAgent:
   m_BaseOffset: 3.87
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &1685608426
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685608421}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.47
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1695146493
 GameObject:
   m_ObjectHideFlags: 0
