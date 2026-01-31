@@ -83,7 +83,7 @@ public class GelatinousCube : Boss
     {
         if (explosion != null)
         {
-            Instantiate(explosion, transform.position, transform.rotation);
+            Instantiate(explosion, transform.position, transform.rotation, parentTransform);
         }
         transform.SetParent(null);
         parentTransform.gameObject.GetComponent<FirstBossFightEnd>().checkForRemainingBosses();
