@@ -30,6 +30,8 @@ public class GelatinousCube : Boss
     [SerializeField]
     private Rigidbody childRigibody;
 
+    public UnityEvent m_MyEvent;
+
     internal override void Start()
     {
         base.Start();
