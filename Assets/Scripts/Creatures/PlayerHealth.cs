@@ -14,6 +14,8 @@ public class PlayerHealth : Creature
     private float regenTick;
     [SerializeField]
     private int regenValue;
+    [SerializeField]
+    private PlayerController playerController;
 
     private void Start()
     {
@@ -45,9 +47,12 @@ public class PlayerHealth : Creature
 
     public override void UpdateHealthByValue(int change, bool decrease = true)
     {
-        base.UpdateHealthByValue(change, decrease);
-        regenActive = false;
-        regenTimer = regenDelayTime;
-        regenTick = regenTickDelay;
+        if (!playerController.blocking)
+        {
+            base.UpdateHealthByValue(change, decrease);
+            regenActive = false;
+            regenTimer = regenDelayTime;
+            regenTick = regenTickDelay;
+        }
     }
 }

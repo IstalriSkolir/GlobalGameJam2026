@@ -16,11 +16,12 @@ public class PlayerController : MonoBehaviour
     public Transform playerCamera;
     public Animator animator;
     public CinemachineImpulseSource impulseSource;
+    public bool blocking = false;
 
     Rigidbody m_Rigidbody;
     Vector3 movementVector = Vector3.zero;
     float dashCooldownTimer = 0.0f;
-    bool blocking = false;
+    
 
     void Start()
     {
