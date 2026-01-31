@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Transform playerCamera;
     public Animator animator;
     public CinemachineImpulseSource impulseSource;
+    public bool canBlock = false;
     public bool blocking = false;
 
     Rigidbody m_Rigidbody;
@@ -66,14 +67,15 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("PlayerMoving", false);
         }
 
-        if(Input.GetButtonDown("Jump")){
+        if(Input.GetButtonDown("Jump") && canBlock)
+        {
             animator.SetBool("Blocking", true);
             animator.ResetTrigger("Light Attack");
             animator.ResetTrigger("Heavy Attack");
             blocking = true;
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetButtonUp("Jump") && canBlock)
         {
             animator.SetBool("Blocking", false);
             animator.ResetTrigger("Light Attack");
@@ -142,4 +144,8 @@ public class PlayerController : MonoBehaviour
     //        Debug.Log("Hit : " + m_Hit.collider.name);
     //    }
     //}
+
+    public void UnlockBlock() {
+        canBlock = true;
+    }
 }
