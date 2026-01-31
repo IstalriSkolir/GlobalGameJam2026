@@ -5,8 +5,8 @@ using UnityEngine;
 public class MechanicalArcher : Boss
 {
     [SerializeField, Header("Mechanical Archer Properties")]
-    private float updateTimer;
-    [SerializeField]
+    //private float updateTimer;
+    //[SerializeField]
     private float distanceBuffer;
     [SerializeField]
     private float attackDelay;
@@ -22,34 +22,37 @@ public class MechanicalArcher : Boss
     [SerializeField]
     private List<Transform> waypoints;
 
-    private float updateFloat;
-    private attackFloat;
+    //private float updateFloat;
+    private float attackFloat;
 
     internal override void Start()
     {
         base.Start();
+        //updateFloat = updateTimer;
+        attackFloat = attackDelay;
     }
 
     void Update()
     {
-        //switch (state)
-        //{
-        //    case State.Retreating: retreating(); break;
-        //    case State.Standard_Attack: standardAttack(); break;
-        //}
-
-
-        updateFloat = Time.deltaTime;
-        if (updateFloat <= 0)
+        switch (state)
         {
-            updateFloat = updateTimer;
-            switch (state)
-            {
-                case State.Searching_For_Waypoint: searchForNewWaypoint(); break;
-                case State.Retreating: retreating(); break;
-                case State.Attack: attack(); break;
-            }
+            case State.Searching_For_Waypoint: searchForNewWaypoint(); break;
+            case State.Retreating: retreating(); break;
+            case State.Attack: attack(); break;
         }
+
+
+        //updateFloat = Time.deltaTime;
+        //if (updateFloat <= 0)
+        //{
+        //    updateFloat = updateTimer;
+        //    switch (state)
+        //    {
+        //        case State.Searching_For_Waypoint: searchForNewWaypoint(); break;
+        //        case State.Retreating: retreating(); break;
+        //        case State.Attack: attack(); break;
+        //    }
+        //}
     }
 
     private void searchForNewWaypoint()
@@ -71,7 +74,11 @@ public class MechanicalArcher : Boss
 
     private void attack()
     {
+        attackFloat -= Time.deltaTime;
+        if (attackFloat <= 0)
+        {
 
+        }
     }
 
     #region Utilities
