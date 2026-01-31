@@ -100,7 +100,7 @@ public class MechanicalArcher : Boss
                 system.Emit(arrowPerAttackPerSystem);
             }
         }
-        if(attackTimeBeforeRetreat <= 0)
+        if(attackTimeRemaining <= 0)
         {
             searchForNewWaypoint();
         }
