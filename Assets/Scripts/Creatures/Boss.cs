@@ -10,6 +10,8 @@ public abstract class Boss : Creature
     [SerializeField]
     internal AudioSource audio;
     [SerializeField]
+    internal Rigidbody rigidbody;
+    [SerializeField]
     internal GameObject player;
 
     internal PlayerHealth playerHealth;
