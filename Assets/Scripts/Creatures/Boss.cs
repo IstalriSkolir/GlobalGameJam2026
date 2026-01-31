@@ -13,6 +13,8 @@ public abstract class Boss : Creature
     internal Rigidbody rigidbody;
     [SerializeField]
     internal GameObject player;
+    [SerializeField]
+    internal GameObject explosion;
 
     internal PlayerHealth playerHealth;
 
@@ -31,6 +33,8 @@ public abstract class Boss : Creature
     {
         animator.SetTrigger(trigger);
     }
+
+    
 
     internal override void death()
     {

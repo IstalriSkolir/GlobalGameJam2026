@@ -4,4 +4,16 @@ public class DevBoss : Boss
     {
         
     }
+
+    void Update()
+    {
+        if (health <= 0)
+        {
+            if (explosion != null)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
+            }
+            Destroy(gameObject);
+        }
+    }
 }
