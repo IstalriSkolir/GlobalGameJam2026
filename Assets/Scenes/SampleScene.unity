@@ -69464,6 +69464,7 @@ MonoBehaviour:
   playerCamera: {fileID: 1572789591}
   animator: {fileID: 1661371821}
   impulseSource: {fileID: 1661371822}
+  blocking: 0
 --- !u!54 &1661371819
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -69622,6 +69623,7 @@ MonoBehaviour:
   regenTickDelay: 0
   regenTick: 0
   regenValue: 0
+  playerController: {fileID: 1661371817}
 --- !u!1 &1663876722
 GameObject:
   m_ObjectHideFlags: 0
