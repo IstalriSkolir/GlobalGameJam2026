@@ -10,6 +10,8 @@ public abstract class Creature : MonoBehaviour
     internal int maxHealth;
 
     public CreatureType CreatureType {  get { return creatureType; } }
+    public int Health { get { return health; } }
+    public int MaxHealth { get { return maxHealth; } }
 
     public virtual void UpdateHealthByValue(int change, bool decrease = true)
     {

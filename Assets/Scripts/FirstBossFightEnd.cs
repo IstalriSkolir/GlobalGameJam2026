@@ -10,6 +10,13 @@ public class FirstBossFightEnd : MonoBehaviour
     [SerializeField]
     private List<GelatinousCube> bosses;
 
+    public void ClearBossesList()
+    {
+        foreach (GelatinousCube cube in bosses)
+            Destroy(cube.gameObject);
+        bosses.Clear();
+    }
+
     public void UpdateBossesList(GelatinousCube newBoss, bool add)
     {
         if (add && !bosses.Contains(newBoss)) bosses.Add(newBoss);
