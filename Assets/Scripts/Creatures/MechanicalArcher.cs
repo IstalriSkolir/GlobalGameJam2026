@@ -11,6 +11,8 @@ public class MechanicalArcher : Boss
     [SerializeField]
     private float attackDelay;
     [SerializeField]
+    private int arrowPerAttackPerSystem;
+    [SerializeField]
     private State state;
 
     [SerializeField, Header("Mechanical Archer Gameobjects & Components")]
@@ -57,6 +59,7 @@ public class MechanicalArcher : Boss
 
     private void searchForNewWaypoint()
     {
+        childMesh.transform.LookAt(transform.forward);
         Vector3 destination = getNewWaypoint();
         SetDestination(destination);
         state = State.Retreating;
@@ -74,10 +77,15 @@ public class MechanicalArcher : Boss
 
     private void attack()
     {
+        childMesh.transform.LookAt(player.transform.position);
         attackFloat -= Time.deltaTime;
         if (attackFloat <= 0)
         {
-
+            attackFloat = attackDelay;
+            foreach(ParticleSystem system in arrows)
+            {
+                system.Emit(arrowPerAttackPerSystem);
+            }
         }
     }
 
