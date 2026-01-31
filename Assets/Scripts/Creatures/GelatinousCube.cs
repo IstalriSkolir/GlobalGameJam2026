@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GelatinousCube : Boss
 {
@@ -30,8 +29,6 @@ public class GelatinousCube : Boss
     private Transform parentTransform;
     [SerializeField]
     private Rigidbody childRigibody;
-    [SerializeField]
-    private UnityEvent endOfFightEvent;
 
     internal override void Start()
     {
@@ -84,14 +81,12 @@ public class GelatinousCube : Boss
 
     internal override void death()
     {
-        if(parentTransform.childCount - 1 == 0)
-        {
-            endOfFightEvent.Invoke();
-        }
         if (explosion != null)
         {
             Instantiate(explosion, transform.position, transform.rotation);
         }
+        transform.SetParent(null);
+        parentTransform.gameObject.GetComponent<FirstBossFightEnd>().checkForRemainingBosses();
         Destroy(gameObject);
     }
 }
