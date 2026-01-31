@@ -74,6 +74,9 @@ public class MechanicalArcher : Boss
     private void retreating()
     {
         float distance = Vector3.Distance(destination, transform.position);
+
+        animator.SetBool("Attacking", false);
+
         if (distance <= distanceBuffer)
         {
             state = State.Attack;
@@ -84,6 +87,9 @@ public class MechanicalArcher : Boss
     private void attack()
     {
         childMesh.transform.LookAt(player.transform.position);
+
+        animator.SetBool("Attacking", true);
+
         attackFloat -= Time.deltaTime;
         attackTimeRemaining -= Time.deltaTime;
         if (attackFloat <= 0)
