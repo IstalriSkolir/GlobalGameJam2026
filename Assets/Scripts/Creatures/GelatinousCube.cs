@@ -3,14 +3,6 @@ using UnityEngine;
 public class GelatinousCube : Boss
 {
     [SerializeField, Header("Gelatinous Cube Properties")]
-    private bool isPlayerInside;
-    [SerializeField]
-    private float damageTickDelay;
-    [SerializeField]
-    private float damageTimer;
-    [SerializeField]
-    private int damage;
-    [SerializeField]
     private float jumpTickDelay;
     [SerializeField]
     private float jumpTimer;
@@ -41,16 +33,8 @@ public class GelatinousCube : Boss
 
     void Update()
     {
-        if (isPlayerInside)
-        {
-            damageTimer -= Time.deltaTime;
-            if (damageTimer <= 0)
-            {
-                damageTimer = damageTickDelay;
-                playerHealth.UpdateHealthByValue(damage);
-            }
-        }
-        else if (!isJumping)
+
+        if (!isJumping)
         {
             SetDestination(player.transform.position);
             jumpTimer -= Time.deltaTime;
@@ -68,21 +52,6 @@ public class GelatinousCube : Boss
             agent.speed = agentSpeed;
             Invoke("setDestinationToPlayer", jumpRecovery);
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            damageTimer = damageTickDelay;
-            isPlayerInside = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-            isPlayerInside = false;
     }
 
     private void jump()
