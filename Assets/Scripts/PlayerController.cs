@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Dash");
             m_Rigidbody.AddForce(movementVector * dashSpeed);
-            impulseSource.GenerateImpulse(0.2f);
+            //impulseSource.GenerateImpulse(0.2f);
             dashCooldownTimer = dashCooldown;
         }
 
