@@ -35,8 +35,6 @@ public class GelatinousCube : Boss
         base.Start();
         jumpTimer = jumpTickDelay;
         agent.speed = agentSpeed;
-
-        transform.SetParent(transform.parent.parent);
     }
 
     void Update()
@@ -81,17 +79,29 @@ public class GelatinousCube : Boss
         SetDestination(player.transform.position);
     }
 
+    public void SetParentTransformVariable(Transform parent)
+    {
+        parentTransform = parent;
+    }
+
     internal override void death()
     {
         FirstBossFightEnd parentScript = parentTransform.gameObject.GetComponent<FirstBossFightEnd>();
         if (explosion != null)
         {
             GameObject newBoss = Instantiate(explosion, transform.position, transform.rotation);
-            GelatinousCube[] scripts = newBoss.GetComponentsInChildren<GelatinousCube>();
-            parentScript.UpdateBossesList(scripts, true);
+            if (newBoss.transform.childCount == 2)
+            {
+                GelatinousCube cube1 = newBoss.transform.GetChild(0).gameObject.GetComponent<GelatinousCube>();
+                GelatinousCube cube2 = newBoss.transform.GetChild(1).gameObject.GetComponent<GelatinousCube>();
+                cube1.SetParentTransformVariable(parentTransform);
+                cube2.SetParentTransformVariable(parentTransform);
+                parentScript.UpdateBossesList(cube1, true);
+                parentScript.UpdateBossesList(cube2, true);
+            }
         }
         transform.SetParent(null);
-        parentScript.UpdateBossesList(new GelatinousCube[]{this}, false);
+        parentScript.UpdateBossesList(this, false);
         Destroy(gameObject);
     }
 }
