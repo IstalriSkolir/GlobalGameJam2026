@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody m_Rigidbody;
     Vector3 movementVector = Vector3.zero;
     float dashCooldownTimer = 0.0f;
+    bool grounded = false;
     
 
     void Start()
@@ -105,7 +106,9 @@ public class PlayerController : MonoBehaviour
             dashCooldownTimer -= Time.deltaTime;
         }
 
-
+        if (!grounded) {
+            m_Rigidbody.AddForce(Vector3.up * -5.0f);
+        }
     }
 
     void FixedUpdate()
@@ -147,5 +150,15 @@ public class PlayerController : MonoBehaviour
 
     public void UnlockBlock() {
         canBlock = true;
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        grounded = true;
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        grounded = false;
     }
 }
