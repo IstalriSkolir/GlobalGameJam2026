@@ -28,13 +28,11 @@ public class MechanicalArcher : Boss
     [SerializeField]
     private List<Transform> waypoints;
 
-    //private float updateFloat;
     private float attackFloat;
 
     internal override void Start()
     {
         base.Start();
-        //updateFloat = updateTimer;
         attackFloat = attackDelay;
         attackTimeRemaining = attackTimeBeforeRetreat;
     }
@@ -47,19 +45,6 @@ public class MechanicalArcher : Boss
             case State.Retreating: retreating(); break;
             case State.Attack: attack(); break;
         }
-
-
-        //updateFloat = Time.deltaTime;
-        //if (updateFloat <= 0)
-        //{
-        //    updateFloat = updateTimer;
-        //    switch (state)
-        //    {
-        //        case State.Searching_For_Waypoint: searchForNewWaypoint(); break;
-        //        case State.Retreating: retreating(); break;
-        //        case State.Attack: attack(); break;
-        //    }
-        //}
     }
 
     private void searchForNewWaypoint()
@@ -74,9 +59,7 @@ public class MechanicalArcher : Boss
     private void retreating()
     {
         float distance = Vector3.Distance(destination, transform.position);
-
         animator.SetBool("Attacking", false);
-
         if (distance <= distanceBuffer)
         {
             state = State.Attack;
@@ -87,9 +70,7 @@ public class MechanicalArcher : Boss
     private void attack()
     {
         childMesh.transform.LookAt(player.transform.position);
-
         animator.SetBool("Attacking", true);
-
         attackFloat -= Time.deltaTime;
         attackTimeRemaining -= Time.deltaTime;
         if (attackFloat <= 0)
@@ -116,18 +97,16 @@ public class MechanicalArcher : Boss
 
     private Vector3 getNewWaypoint()
     {
-        Dictionary<float, Transform> waypointsByDistance = new Dictionary<float, Transform>();
+        float highestDistance = float.MinValue;
         foreach(Transform waypoint in waypoints)
         {
             float distance = Vector3.Distance(player.transform.position, waypoint.position);
-            if (!waypointsByDistance.ContainsKey(distance))
+            if (distance > highestDistance)
             {
-                waypointsByDistance.Add(distance, waypoint);
+                highestDistance = distance;
+                destination = waypoint.position;
             }
         }
-        List<float> distances = waypointsByDistance.Keys.ToList();
-        float nearestDistance = distances.Min();
-        destination = waypointsByDistance[nearestDistance].position;
         return destination;
     }
 
