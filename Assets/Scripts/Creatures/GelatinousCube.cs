@@ -7,6 +7,8 @@ public class GelatinousCube : Boss
     [SerializeField]
     private float jumpTimer;
     [SerializeField]
+    private float minJumpDistance;
+    [SerializeField]
     private float jumpForce;
     [SerializeField]
     private float jumpRecovery;
@@ -57,13 +59,15 @@ public class GelatinousCube : Boss
     private void jump()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        
-        isJumping = true;
-        jumpTarget = player.transform.position;
-        SetDestination(jumpTarget);
-        agent.speed = agentJumpSpeed;
-        childRigibody.isKinematic = false;
-        childRigibody.AddForce(0, jumpForce * distance, 0, ForceMode.Impulse);
+        if (distance <= minJumpDistance)
+        {
+            isJumping = true;
+            jumpTarget = player.transform.position;
+            SetDestination(jumpTarget);
+            agent.speed = agentJumpSpeed;
+            childRigibody.isKinematic = false;
+            childRigibody.AddForce(0, jumpForce * distance, 0, ForceMode.Impulse);
+        }
     }
 
     private void setDestinationToPlayer()
