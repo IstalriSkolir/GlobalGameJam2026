@@ -10,33 +10,16 @@ public class FirstBossFightEnd : MonoBehaviour
     [SerializeField]
     private List<GelatinousCube> bosses;
 
-    public void UpdateBossesList(GelatinousCube[] newBosses, bool add)
+    public void UpdateBossesList(GelatinousCube newBoss, bool add)
     {
-        if (newBosses != null && newBosses.Length > 0)
-        {
-            if (add)
-            {
-                foreach (GelatinousCube cube in newBosses)
-                {
-                    if (!bosses.Contains(cube))
-                    {
-                        bosses.Add(cube);
-                    }
-                }
-            }
-            else
-            {
-                foreach (GelatinousCube cube in newBosses)
-                {
-                    if (bosses.Contains(cube))
-                    {
-                        bosses.Remove(cube);
-                    }
-                }
-            }
-        }
+        if (add && !bosses.Contains(newBoss)) bosses.Add(newBoss);
+        else if (!add && bosses.Contains(newBoss)) bosses.Remove(newBoss);
+        Invoke("checkIfAnyCubesLeft", 1f);
+    }
 
-        if (transform.childCount == 0)
+    private void checkIfAnyCubesLeft()
+    {
+        if (bosses.Count == 0)
             fightEndEvent.Invoke();
     }
 }
