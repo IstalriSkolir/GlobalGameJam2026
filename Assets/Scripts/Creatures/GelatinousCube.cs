@@ -84,6 +84,10 @@ public class GelatinousCube : Boss
 
     internal override void death()
     {
+        if(parentTransform.childCount - 1 == 0)
+        {
+            endOfFightEvent.Invoke();
+        }
         if (explosion != null)
         {
             Instantiate(explosion, transform.position, transform.rotation);
