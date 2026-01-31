@@ -81,12 +81,15 @@ public class GelatinousCube : Boss
 
     internal override void death()
     {
+        FirstBossFightEnd parentScript = parentTransform.gameObject.GetComponent<FirstBossFightEnd>();
         if (explosion != null)
         {
-            Instantiate(explosion, transform.position, transform.rotation, parentTransform);
+            GameObject newBoss = Instantiate(explosion, transform.position, transform.rotation, parentTransform);
+            GelatinousCube[] scripts = newBoss.GetComponentsInChildren<GelatinousCube>();
+            parentScript.UpdateBossesList(scripts, true);
         }
         transform.SetParent(null);
-        parentTransform.gameObject.GetComponent<FirstBossFightEnd>().checkForRemainingBosses();
+        parentScript.UpdateBossesList(new GelatinousCube[]{this}, false);
         Destroy(gameObject);
     }
 }
