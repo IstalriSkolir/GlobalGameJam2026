@@ -99,12 +99,9 @@ public class GelatinousCube : Boss
                 parentScript.UpdateBossesList(cube1, true);
                 parentScript.UpdateBossesList(cube2, true);
             }
-            //GelatinousCube[] scripts = newBoss.GetComponentsInChildren<GelatinousCube>();
-            //parentScript.UpdateBossesList(scripts, true);
         }
         transform.SetParent(null);
         parentScript.UpdateBossesList(this, false);
-        //parentScript.UpdateBossesList(new GelatinousCube[]{this}, false);
         Destroy(gameObject);
     }
 }
