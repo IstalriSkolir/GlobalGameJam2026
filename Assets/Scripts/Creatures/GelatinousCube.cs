@@ -35,6 +35,8 @@ public class GelatinousCube : Boss
         base.Start();
         jumpTimer = jumpTickDelay;
         agent.speed = agentSpeed;
+
+        transform.SetParent(transform.parent.parent);
     }
 
     void Update()
@@ -84,7 +86,7 @@ public class GelatinousCube : Boss
         FirstBossFightEnd parentScript = parentTransform.gameObject.GetComponent<FirstBossFightEnd>();
         if (explosion != null)
         {
-            GameObject newBoss = Instantiate(explosion, transform.position, transform.rotation, parentTransform);
+            GameObject newBoss = Instantiate(explosion, transform.position, transform.rotation);
             GelatinousCube[] scripts = newBoss.GetComponentsInChildren<GelatinousCube>();
             parentScript.UpdateBossesList(scripts, true);
         }
