@@ -3,9 +3,13 @@ using UnityEngine;
 public abstract class Creature : MonoBehaviour
 {
     [SerializeField, Header("Creature Properties")]
+    private CreatureType creatureType;
+    [SerializeField]
     internal int health;
     [SerializeField]
     internal int maxHealth;
+
+    public CreatureType CreatureType {  get { return creatureType; } }
 
     public virtual void UpdateHealthByValue(int change, bool decrease = true)
     {

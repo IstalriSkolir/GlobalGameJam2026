@@ -10055,6 +10055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0fa07c9f201b54abdbbaaa6032ca65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creatureType: 1
   health: 100
   maxHealth: 100
   agent: {fileID: 3827589456157603180}

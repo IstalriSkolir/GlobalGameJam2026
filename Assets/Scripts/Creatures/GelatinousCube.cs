@@ -64,7 +64,7 @@ public class GelatinousCube : Boss
         {
             isJumping = false;
             childRigibody.isKinematic = true;
-            childTransform.localPosition = new Vector3(0, 0, 0); //new Vector3(childTransform.position.x, 0, childTransform.position.z);
+            childTransform.localPosition = new Vector3(0, 0, 0);
             agent.speed = agentSpeed;
             Invoke("setDestinationToPlayer", jumpRecovery);
         }
@@ -94,7 +94,7 @@ public class GelatinousCube : Boss
         SetDestination(jumpTarget);
         agent.speed = agentJumpSpeed;
         childRigibody.isKinematic = false;
-        childRigibody.AddForce(0, jumpForce * distance, 0, ForceMode.Impulse); //12
+        childRigibody.AddForce(0, jumpForce * distance, 0, ForceMode.Impulse);
     }
 
     private void setDestinationToPlayer()
