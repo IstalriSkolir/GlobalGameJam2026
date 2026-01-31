@@ -20,6 +20,8 @@ public class GelatinousCube : Boss
     private float agentJumpSpeed;
     [SerializeField]
     private Vector3 jumpTarget;
+    [SerializeField]
+    private Animator jellyAnimator;
 
     [SerializeField, Header("Gelatinous Cube Gameobjects & Components")]
     private Transform childTransform;
@@ -73,5 +75,24 @@ public class GelatinousCube : Boss
     private void setDestinationToPlayer()
     {
         SetDestination(player.transform.position);
+    }
+
+    internal override void death()
+    {
+        if (explosion != null)
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+        }
+        Destroy(gameObject);
+    }
+
+    public void StopAgent()
+    {
+        agent.isStopped = true;
+    }
+
+    public void StartAgent()
+    {
+        agent.isStopped = false;
     }
 }

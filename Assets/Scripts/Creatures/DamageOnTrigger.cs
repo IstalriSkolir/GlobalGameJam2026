@@ -16,6 +16,7 @@ public class DamageOnTrigger : MonoBehaviour
     {
         if (other.tag == "Boss") {
             other.GetComponent<Boss>().health -= damage;
+            other.GetComponent<Boss>().UpdateHealthByValue(damage);
         }
     }
 }
