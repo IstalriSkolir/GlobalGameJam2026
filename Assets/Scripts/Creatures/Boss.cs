@@ -34,10 +34,18 @@ public abstract class Boss : Creature
         animator.SetTrigger(trigger);
     }
 
-    
-
     internal override void death()
     {
         animator.SetTrigger("Death");
+    }
+
+    public virtual void StopAgent()
+    {
+        agent.isStopped = true;
+    }
+
+    public virtual void StartAgent()
+    {
+        agent.isStopped = false;
     }
 }

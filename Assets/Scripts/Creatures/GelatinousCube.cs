@@ -85,14 +85,4 @@ public class GelatinousCube : Boss
         }
         Destroy(gameObject);
     }
-
-    public void StopAgent()
-    {
-        agent.isStopped = true;
-    }
-
-    public void StartAgent()
-    {
-        agent.isStopped = false;
-    }
 }
