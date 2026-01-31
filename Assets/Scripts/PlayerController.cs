@@ -56,11 +56,15 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetButtonDown("Jump")){
             animator.SetBool("Blocking", true);
+            animator.ResetTrigger("Light Attack");
+            animator.ResetTrigger("Heavy Attack");
         }
 
         if (Input.GetButtonUp("Jump"))
         {
             animator.SetBool("Blocking", false);
+            animator.ResetTrigger("Light Attack");
+            animator.ResetTrigger("Heavy Attack");
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -86,5 +90,11 @@ public class PlayerController : MonoBehaviour
         //Apply the movement vector to the current position, which is
         //multiplied by deltaTime and speed for a smooth MovePosition
         m_Rigidbody.MovePosition(transform.position + movementVector * m_Speed * Time.fixedDeltaTime);
+    }
+
+    public void ResetAttackTriggers()
+    {
+        animator.ResetTrigger("Light Attack");
+        animator.ResetTrigger("Heavy Attack");
     }
 }
