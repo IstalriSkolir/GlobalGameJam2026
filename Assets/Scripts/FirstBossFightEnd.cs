@@ -14,7 +14,7 @@ public class FirstBossFightEnd : MonoBehaviour
 
     private void Start()
     {
-        music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
+        //music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
     }
 
     public void ClearBossesList()
@@ -35,7 +35,7 @@ public class FirstBossFightEnd : MonoBehaviour
     {
         if (bosses.Count == 0)
         {
-            music.UpdateMusicMode(MusicMode.Alter);
+            GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().UpdateMusicMode(MusicMode.Alter);
             fightEndEvent.Invoke();
         }
     }

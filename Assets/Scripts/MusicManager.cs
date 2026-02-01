@@ -16,6 +16,10 @@ public class MusicManager : MonoBehaviour
     private bool fadeIn;
     [SerializeField]
     private bool fadeOut;
+    [SerializeField]
+    private MusicMode currentMode;
+
+    public MusicMode CurrentMode { get { return currentMode; } }
 
     [SerializeField, Header("Gameobjects & Compnents")]
     private AudioSource source;
@@ -52,6 +56,7 @@ public class MusicManager : MonoBehaviour
 
     public void UpdateMusicMode(MusicMode mode)
     {
+        currentMode = mode;
         switch (mode)
         {
             case MusicMode.Stop: stop(); break;

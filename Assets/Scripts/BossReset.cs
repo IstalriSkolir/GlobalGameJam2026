@@ -12,6 +12,8 @@ public class BossReset : MonoBehaviour
     private PlayerController playerController;
     [SerializeField]
     private int playerMaxHealth;
+    [SerializeField]
+    private MusicManager music;
 
     [SerializeField, Header("First Boss Gameobjects & Components")]
     private GameObject gelatinousCubePrefab;
@@ -57,6 +59,7 @@ public class BossReset : MonoBehaviour
     private void Start()
     {
         playerMaxHealth = playerHealth.MaxHealth;
+        //music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
     }
 
     public void UpdatePlayerRespawnLocation(Transform newRespawn)
@@ -76,6 +79,9 @@ public class BossReset : MonoBehaviour
     {
         playerHealth.health = playerMaxHealth;
         playerHealth.transform.position = playerRespawnLocation;
+        if(music == null)
+            music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
+        music.UpdateMusicMode(MusicMode.Alter);
     }
 
     private void resetFirstBoss()
