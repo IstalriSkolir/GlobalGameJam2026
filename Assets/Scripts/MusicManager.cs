@@ -11,6 +11,8 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     private AudioClip alterMusic;
     [SerializeField]
+    private AudioClip battleMusic;
+    [SerializeField]
     private bool fadeIn;
     [SerializeField]
     private bool fadeOut;
@@ -54,6 +56,7 @@ public class MusicManager : MonoBehaviour
         {
             case MusicMode.Stop: stop(); break;
             case MusicMode.Alter: alter(); break;
+            case MusicMode.Battle: battle(); break;
         }
     }
 
@@ -65,6 +68,16 @@ public class MusicManager : MonoBehaviour
 
     private void alter()
     {
+        //target = volumeTarget;
+        source.volume = volumeTarget;
+        source.clip = alterMusic;
+        source.Play();
+    }
 
+    private void battle()
+    {
+        source.volume = volumeTarget;
+        source.clip = battleMusic;
+        source.Play();
     }
 }

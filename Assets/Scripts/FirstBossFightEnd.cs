@@ -9,6 +9,13 @@ public class FirstBossFightEnd : MonoBehaviour
     private UnityEvent fightEndEvent;
     [SerializeField]
     private List<GelatinousCube> bosses;
+    [SerializeField]
+    private MusicManager music;
+
+    private void Start()
+    {
+        music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
+    }
 
     public void ClearBossesList()
     {
@@ -27,6 +34,9 @@ public class FirstBossFightEnd : MonoBehaviour
     private void checkIfAnyCubesLeft()
     {
         if (bosses.Count == 0)
+        {
+            music.UpdateMusicMode(MusicMode.Alter);
             fightEndEvent.Invoke();
+        }
     }
 }

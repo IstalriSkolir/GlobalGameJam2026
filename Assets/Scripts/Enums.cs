@@ -9,7 +9,8 @@ public enum CreatureType
 public enum MusicMode
 {
     Stop,
-    Alter
+    Alter,
+    Battle
 }
 
 public enum PlayerAudioType

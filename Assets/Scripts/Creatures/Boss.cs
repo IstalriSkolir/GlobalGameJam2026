@@ -16,6 +16,8 @@ public abstract class Boss : Creature
     internal GameObject player;
     [SerializeField]
     internal GameObject explosion;
+    [SerializeField]
+    internal MusicManager music;
 
     //public UnityEvent m_MyEvent;
 
@@ -23,6 +25,8 @@ public abstract class Boss : Creature
 
     internal virtual void Start()
     {
+        music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
+        music.UpdateMusicMode(MusicMode.Battle);
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
     }
