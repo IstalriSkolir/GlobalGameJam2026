@@ -39,6 +39,21 @@ public class BossReset : MonoBehaviour
     [SerializeField]
     private GameObject mechanicalArcherTrigger;
 
+    [SerializeField, Header("Third Boss Gameobject & Components")]
+    private GameObject scarabPrefab;
+    [SerializeField]
+    private GameObject currentScarab;
+    [SerializeField]
+    private Vector3 thirdBossLocalPosition;
+    [SerializeField]
+    private GameObject thirdTeleporter;
+    [SerializeField]
+    private List<Transform> thirdBossWaypoints;
+    [SerializeField]
+    private GameObject scarabBossArena;
+    [SerializeField]
+    private GameObject scarabTrigger;
+
     private void Start()
     {
         playerMaxHealth = playerHealth.MaxHealth;
@@ -54,6 +69,7 @@ public class BossReset : MonoBehaviour
         resetPlayer();
         resetFirstBoss();
         resetSecondBoss();
+        resetThirdBoss();
     }
 
     private void resetPlayer()
@@ -82,5 +98,18 @@ public class BossReset : MonoBehaviour
         archer.SetWaypoints(secondBossWaypoints);
         currentMechanicalArcher.transform.localPosition = secondBossLocalPosition;
         mechanicalArcherTrigger.GetComponent<EnableObjectWhenPlayerCollides>().ResetGelatinousCube(currentMechanicalArcher);
+    }
+
+    private void resetThirdBoss()
+    {
+        if (currentScarab != null)
+            Destroy(currentScarab);
+        thirdTeleporter.SetActive(false);
+        currentScarab = Instantiate(scarabPrefab, new Vector3(0, 0, 0), Quaternion.identity, scarabBossArena.transform);
+        MechanicalArcher scarab = currentScarab.GetComponent<MechanicalArcher>();
+        scarab.SetPortalReference(thirdTeleporter);
+        scarab.SetWaypoints(thirdBossWaypoints);
+        currentScarab.transform.localPosition = thirdBossLocalPosition;
+        scarabTrigger.GetComponent<EnableObjectWhenPlayerCollides>().ResetGelatinousCube(currentScarab);
     }
 }
