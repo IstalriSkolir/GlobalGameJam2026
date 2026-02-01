@@ -5485,7 +5485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7557789722257616098
 Transform:
   m_ObjectHideFlags: 0
@@ -5524,6 +5524,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   player: {fileID: 0}
   explosion: {fileID: 0}
+  music: {fileID: 0}
   distanceBuffer: 3
   attackDelay: 0.5
   arrowPerAttackPerSystem: 3

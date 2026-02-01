@@ -5164,9 +5164,10 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   player: {fileID: 0}
   explosion: {fileID: 0}
-  distanceBuffer: 3
-  attackDelay: 0.5
-  arrowPerAttackPerSystem: 3
+  music: {fileID: 0}
+  distanceBuffer: 6
+  attackDelay: 1
+  arrowPerAttackPerSystem: 50
   attackTimeBeforeRetreat: 5
   attackTimeRemaining: 0
   isAlive: 0
@@ -7137,6 +7138,8 @@ GameObject:
   - component: {fileID: 1470812434246729704}
   - component: {fileID: 726779471545607895}
   - component: {fileID: 8697369740337319155}
+  - component: {fileID: 5674967502962350461}
+  - component: {fileID: 8204912893446137479}
   m_Layer: 0
   m_Name: Webs
   m_TagString: Untagged
@@ -7232,7 +7235,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -12015,6 +12018,36 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5674967502962350461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8792797919970493330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9907c10f775a892418dbd3b8a098b497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToLookAt: {fileID: 0}
+--- !u!114 &8204912893446137479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8792797919970493330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cca16b35e1e8314bb5a52b499b7c2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  value: 5
+  system: {fileID: 0}
+  playerHealth: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!1 &9123404169576344660
 GameObject:
   m_ObjectHideFlags: 0
