@@ -145,6 +145,7 @@ public class MechanicalArcher : Boss
         isAlive = false;
         agent.isStopped = true;
         Destroy(animator);
+        music.UpdateMusicMode(MusicMode.Alter);
         List<Vector3> directions = new List<Vector3>()
         {
             transform.forward,
