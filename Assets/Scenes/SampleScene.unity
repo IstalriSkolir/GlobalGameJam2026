@@ -5059,6 +5059,77 @@ Transform:
   - {fileID: 143869492}
   m_Father: {fileID: 1670402548}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 42.679}
+--- !u!1 &28023636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28023637}
+  - component: {fileID: 28023639}
+  - component: {fileID: 28023638}
+  m_Layer: 0
+  m_Name: Post Processing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &28023637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28023636}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9238794, z: -0, w: 0.38268375}
+  m_LocalPosition: {x: -61.2, y: 8.62, z: 61.2}
+  m_LocalScale: {x: 70.609, y: 26.158, z: 121.224304}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1217478918}
+  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
+--- !u!65 &28023638
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28023636}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &28023639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28023636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 12bbdb77468adcf4da6f39f206ab405c, type: 2}
+  isGlobal: 0
+  blendDistance: 0.05
+  weight: 1
+  priority: 0
 --- !u!1 &36148677
 GameObject:
   m_ObjectHideFlags: 0
@@ -27884,6 +27955,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 8.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 1
       objectReference: {fileID: 0}
@@ -45342,6 +45417,10 @@ PrefabInstance:
     - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
       propertyPath: scalingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 8.28
       objectReference: {fileID: 0}
     - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -75178,13 +75257,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764535088}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.23129821, y: -0, z: -0, w: 0.972883}
+  m_LocalRotation: {x: -0.22680248, y: -0.19088371, z: 0.04538169, w: 0.95397305}
   m_LocalPosition: {x: -45.5, y: 88.1, z: 192.8}
   m_LocalScale: {x: 19.42, y: 19.42, z: 19.42}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1217478918}
-  m_LocalEulerAnglesHint: {x: -26.747, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -24.545, y: -25.024, z: 10.975}
 --- !u!64 &764535090
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -76379,8 +76458,8 @@ Transform:
   m_GameObject: {fileID: 828019818}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710707, y: 0.00000008940697, z: 0.000000012281006, w: 0.70710653}
-  m_LocalPosition: {x: 0, y: -2.85, z: 55.76}
-  m_LocalScale: {x: 10.197238, y: 57.543427, z: 62.13075}
+  m_LocalPosition: {x: 0, y: -2.85, z: 31.11}
+  m_LocalScale: {x: 10.197238, y: 7.833387, z: 62.13075}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1670402548}
@@ -86050,6 +86129,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5900203016092295501}
+  - {fileID: 28023637}
   - {fileID: 1538533408}
   - {fileID: 250825533350151965}
   - {fileID: 435145551}
@@ -86132,6 +86212,10 @@ PrefabInstance:
     - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
       propertyPath: scalingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 8.28
       objectReference: {fileID: 0}
     - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -102148,7 +102232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1685608422
 Transform:
   m_ObjectHideFlags: 0
@@ -102215,6 +102299,7 @@ MonoBehaviour:
   attackTimeRemaining: 0
   state: 0
   childMesh: {fileID: 2550890013695964631}
+  smoothRotationSpeed: 10
   destination: {x: 0, y: 0, z: 0}
   arrows:
   - {fileID: 1954796160}
@@ -120748,6 +120833,10 @@ PrefabInstance:
     - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
       propertyPath: scalingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 8.28
       objectReference: {fileID: 0}
     - target: {fileID: 7680684761399362049, guid: 6e9ff55f5ff7a7d4ea6a1862001df148, type: 3}
       propertyPath: InitialModule.startSize.scalar
