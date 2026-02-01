@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GelatinousCube : Boss
@@ -29,6 +30,8 @@ public class GelatinousCube : Boss
     private Transform parentTransform;
     [SerializeField]
     private Rigidbody childRigibody;
+    [SerializeField]
+    List<AudioClip> clips;
 
     internal override void Start()
     {
@@ -57,6 +60,16 @@ public class GelatinousCube : Boss
             childTransform.localPosition = new Vector3(0, 0, 0);
             agent.speed = agentSpeed;
             Invoke("setDestinationToPlayer", jumpRecovery);
+        }
+    }
+
+    public void RandomSquishSound()
+    {
+        if (!audio.isPlaying)
+        {
+            AudioClip clip = clips[Random.Range(0, clips.Count)];
+            audio.clip = clip;
+            audio.Play();
         }
     }
 

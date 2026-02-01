@@ -185,6 +185,8 @@ MonoBehaviour:
   player: {fileID: 0}
   playerSpeed: 0
   playerDashSpeed: 0
+  playerReducedSpeed: 0
+  playerReducedDashSpeed: 0
 --- !u!1 &3222844047125224402
 GameObject:
   m_ObjectHideFlags: 0
@@ -15122,6 +15124,9 @@ MonoBehaviour:
   childTransform: {fileID: 8844712787013640492}
   parentTransform: {fileID: 0}
   childRigibody: {fileID: 214351719936005436}
+  clips:
+  - {fileID: 8300000, guid: 33c304af5b26ebb44b3eea183f2662c8, type: 3}
+  - {fileID: 8300000, guid: 5cad9a2d4fb05bb42ab922ffefb5c19d, type: 3}
 --- !u!195 &3827589456157603180
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -15165,9 +15170,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
