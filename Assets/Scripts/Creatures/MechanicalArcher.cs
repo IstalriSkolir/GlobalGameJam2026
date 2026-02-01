@@ -51,23 +51,25 @@ public class MechanicalArcher : Boss
 
         var step = smoothRotationSpeed * Time.deltaTime;
 
-        if (!attacking) {
-            Quaternion rotationTarget = Quaternion.LookRotation(transform.forward);
-            childMesh.transform.rotation = Quaternion.RotateTowards(childMesh.transform.rotation, rotationTarget, step);
+        childMesh.transform.LookAt(player.transform.position);
 
-            //Vector3 lookDirection = lookAtTarget.position - mainCamera.position;
-            //lookDirection.Normalize();
+        //if (!attacking) {
+        //    Quaternion rotationTarget = Quaternion.LookRotation(transform.forward);
+        //    childMesh.transform.rotation = Quaternion.RotateTowards(childMesh.transform.rotation, rotationTarget, step);
 
-            //childMesh.transform.rotation = Quaternion.Slerp(childMesh.transform.rotation, Quaternion.LookRotation(transform.forward), smoothRotationSpeed * Time.deltaTime);
-        }
-        else{
-            Quaternion rotationTarget = Quaternion.LookRotation(player.transform.position);
-            childMesh.transform.rotation = Quaternion.RotateTowards(childMesh.transform.rotation, rotationTarget, step);
+        //    //Vector3 lookDirection = lookAtTarget.position - mainCamera.position;
+        //    //lookDirection.Normalize();
 
-            //childMesh.transform.rotation = Quaternion.Slerp(childMesh.transform.rotation, Quaternion.LookRotation(player.transform.position), smoothRotationSpeed * Time.deltaTime);
-        }
+        //    //childMesh.transform.rotation = Quaternion.Slerp(childMesh.transform.rotation, Quaternion.LookRotation(transform.forward), smoothRotationSpeed * Time.deltaTime);
+        //}
+        //else{
+        //    Quaternion rotationTarget = Quaternion.LookRotation(player.transform.position);
+        //    childMesh.transform.rotation = Quaternion.RotateTowards(childMesh.transform.rotation, rotationTarget, step);
 
-        
+        //    //childMesh.transform.rotation = Quaternion.Slerp(childMesh.transform.rotation, Quaternion.LookRotation(player.transform.position), smoothRotationSpeed * Time.deltaTime);
+        //}
+
+
     }
 
     private void searchForNewWaypoint()

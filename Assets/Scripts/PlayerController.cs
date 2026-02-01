@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
         Vector3 bodyLook = new Vector3(0, Input.GetAxis("Mouse X"), 0);
         Vector3 cameraLook = new Vector3(-Input.GetAxis("Mouse Y"), 0, 0);
 
+        playerCamera.rotation = new Quaternion(Mathf.Clamp(playerCamera.rotation.x, -90.0f, 90.0f), playerCamera.rotation.y, playerCamera.rotation.z, playerCamera.rotation.w);
+
         transform.Rotate(bodyLook * lookSpeedY);
         playerCamera.Rotate(cameraLook * lookSpeedX);
 
