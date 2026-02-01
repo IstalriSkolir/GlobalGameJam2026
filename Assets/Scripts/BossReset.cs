@@ -9,6 +9,8 @@ public class BossReset : MonoBehaviour
     [SerializeField]
     private PlayerHealth playerHealth;
     [SerializeField]
+    private PlayerController playerController;
+    [SerializeField]
     private int playerMaxHealth;
 
     [SerializeField, Header("First Boss Gameobjects & Components")]

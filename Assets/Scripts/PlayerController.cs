@@ -6,6 +6,8 @@ using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float topSpeed;
+    public float topDashSpeed;
     public float m_Speed = 5f;
     public float m_BlockSpeed = 4f;
     public float lookSpeedX = 2.5f;
@@ -27,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        topSpeed = m_Speed;
+        topDashSpeed = dashSpeed;
+
         //Fetch the Rigidbody from the GameObject with this script attached
         m_Rigidbody = GetComponent<Rigidbody>();
 
@@ -162,5 +167,11 @@ public class PlayerController : MonoBehaviour
     void OnCollisionExit(Collision other)
     {
         grounded = false;
+    }
+
+    public void ResetSpeed()
+    {
+        m_Speed = topSpeed;
+        dashSpeed = topDashSpeed;
     }
 }

@@ -89,7 +89,7 @@ public class GelatinousCube : Boss
         FirstBossFightEnd parentScript = parentTransform.gameObject.GetComponent<FirstBossFightEnd>();
         if (explosion != null)
         {
-            GameObject newBoss = Instantiate(explosion, transform.position, transform.rotation);
+            GameObject newBoss = Instantiate(explosion, transform.position, transform.rotation, parentTransform);
             if (newBoss.transform.childCount == 2)
             {
                 GelatinousCube cube1 = newBoss.transform.GetChild(0).gameObject.GetComponent<GelatinousCube>();
@@ -102,6 +102,7 @@ public class GelatinousCube : Boss
         }
         transform.SetParent(null);
         parentScript.UpdateBossesList(this, false);
+        player.GetComponent<PlayerController>().ResetSpeed();
         Destroy(gameObject);
     }
 }
