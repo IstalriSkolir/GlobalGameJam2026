@@ -4,3 +4,8 @@ public enum CreatureType
     Boss,
     All
 }
+
+public enum PlayerAudioType
+{
+    Fall_Landing
+}
