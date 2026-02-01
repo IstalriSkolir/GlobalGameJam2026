@@ -28,18 +28,6 @@ public class MainMenu : MonoBehaviour
         //StartCoroutine(increaseVolume(volumeIncreaseDuration, volumeTarget));
     }
 
-    private IEnumerator increaseVolume(float duration, float target)
-    {
-        float stepTime = 0;
-        while(stepTime < duration)
-        {
-            stepTime += Time.deltaTime;
-            source.volume = Mathf.Lerp(0, target, stepTime / duration);
-            yield return null;
-        }
-        if (source.volume != target) source.volume = target;
-    }
-
     public void StartButtonPressed()
     {
         animator.SetTrigger("Start");

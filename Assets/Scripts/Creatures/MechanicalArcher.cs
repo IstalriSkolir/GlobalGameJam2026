@@ -17,6 +17,12 @@ public class MechanicalArcher : Boss
     [SerializeField]
     private float attackTimeRemaining;
     [SerializeField]
+    private bool isAlive;
+    [SerializeField]
+    private float forceOnDeath;
+    [SerializeField]
+    private float deleteDelayAfterDeath;
+    [SerializeField]
     private State state;
 
     [SerializeField, Header("Mechanical Archer Gameobjects & Components")]
@@ -29,6 +35,10 @@ public class MechanicalArcher : Boss
     private List<ParticleSystem> arrows;
     [SerializeField]
     private List<Transform> waypoints;
+    [SerializeField]
+    private List<GameObject> childrenWithMeshes;
+    [SerializeField]
+    private List<ParticleSystem> particles;
 
     private float attackFloat;
     bool attacking = false;
@@ -38,20 +48,24 @@ public class MechanicalArcher : Boss
         base.Start();
         attackFloat = attackDelay;
         attackTimeRemaining = attackTimeBeforeRetreat;
+        isAlive = true;
     }
 
     void Update()
     {
-        switch (state)
+        if (isAlive)
         {
-            case State.Searching_For_Waypoint: searchForNewWaypoint(); break;
-            case State.Retreating: retreating(); break;
-            case State.Attack: attack(); break;
+            switch (state)
+            {
+                case State.Searching_For_Waypoint: searchForNewWaypoint(); break;
+                case State.Retreating: retreating(); break;
+                case State.Attack: attack(); break;
+            }
+
+            //var step = smoothRotationSpeed * Time.deltaTime;
+
+            childMesh.transform.LookAt(player.transform.position);
         }
-
-        var step = smoothRotationSpeed * Time.deltaTime;
-
-        childMesh.transform.LookAt(player.transform.position);
 
         //if (!attacking) {
         //    Quaternion rotationTarget = Quaternion.LookRotation(transform.forward);
@@ -114,6 +128,41 @@ public class MechanicalArcher : Boss
         {
             searchForNewWaypoint();
         }
+    }
+
+    internal override void death()
+    {
+        isAlive = false;
+        agent.isStopped = true;
+        Destroy(animator);
+        List<Vector3> directions = new List<Vector3>()
+        {
+            transform.forward,
+            transform.up,
+            transform.right,
+            -transform.forward,
+            -transform.up,
+            -transform.right,
+        };
+        foreach(GameObject child in childrenWithMeshes)
+        {
+            child.transform.SetParent(transform);
+            MeshCollider collider = child.AddComponent<MeshCollider>();
+            collider.convex = true;
+            Rigidbody body = child.AddComponent<Rigidbody>();
+            Vector3 direction = directions[Random.Range(0, directions.Count)];
+            body.AddForce(direction * forceOnDeath);
+        }
+        foreach(ParticleSystem system in particles)
+        {
+            system.Stop();
+        }
+        Invoke("selfDestruct", deleteDelayAfterDeath);
+    }
+
+    private void selfDestruct()
+    {
+        Destroy(gameObject);
     }
 
     #region Utilities

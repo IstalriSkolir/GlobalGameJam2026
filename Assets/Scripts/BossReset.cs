@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class BossReset : MonoBehaviour
 {
-    [SerializeField, Header("Player ")]
+    [SerializeField, Header("Player")]
     private Vector3 playerRespawnLocation;
     [SerializeField]
     private PlayerHealth playerHealth;
@@ -21,6 +21,11 @@ public class BossReset : MonoBehaviour
     [SerializeField]
     private GameObject gelatinousCubeTrigger;
 
+    [SerializeField, Header("Second Boss Gameobject & Components")]
+    private GameObject mechanicalArcherPrefab;
+    [SerializeField]
+    private Vector3 secondBossLocalPosition;
+
     private void Start()
     {
         playerMaxHealth = playerHealth.MaxHealth;
@@ -35,6 +40,7 @@ public class BossReset : MonoBehaviour
     {
         resetPlayer();
         resetFirstBoss();
+        resetSecondBoss();
     }
 
     private void resetPlayer()
@@ -50,5 +56,10 @@ public class BossReset : MonoBehaviour
         GameObject cube = Instantiate(gelatinousCubePrefab, new Vector3(0, 0, 0), Quaternion.identity, bossParent.transform);
         cube.transform.localPosition = firstBossLocalPosition;
         gelatinousCubeTrigger.GetComponent<EnableObjectWhenPlayerCollides>().ResetGelatinousCube(cube);
+    }
+
+    private void resetSecondBoss()
+    {
+
     }
 }
