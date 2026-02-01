@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 322461477003398717}
   - component: {fileID: 3704726913730240077}
   - component: {fileID: 136116562484265871}
+  - component: {fileID: 5155618200741074978}
   m_Layer: 7
   m_Name: MeshRenderer
   m_TagString: Untagged
@@ -168,6 +169,22 @@ MonoBehaviour:
   damageTargets: 1
   creaturesInRange: []
   timer: 0
+--- !u!114 &5155618200741074978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367575373803892669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f25a9f23d35ceb04680e2ffe14aaf850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedModifier: 0.15
+  player: {fileID: 0}
+  playerSpeed: 0
+  playerDashSpeed: 0
 --- !u!1 &3222844047125224402
 GameObject:
   m_ObjectHideFlags: 0
