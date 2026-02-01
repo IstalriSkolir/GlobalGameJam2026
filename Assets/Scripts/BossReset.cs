@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,9 +25,17 @@ public class BossReset : MonoBehaviour
     [SerializeField, Header("Second Boss Gameobject & Components")]
     private GameObject mechanicalArcherPrefab;
     [SerializeField]
+    private GameObject currentMechanicalArcher;
+    [SerializeField]
     private Vector3 secondBossLocalPosition;
     [SerializeField]
     private GameObject secondTeleporter;
+    [SerializeField]
+    private List<Transform> secondBossWaypoints;
+    [SerializeField]
+    private GameObject arrowBossArena;
+    [SerializeField]
+    private GameObject mechanicalArcherTrigger;
 
     private void Start()
     {
@@ -62,6 +71,14 @@ public class BossReset : MonoBehaviour
 
     private void resetSecondBoss()
     {
-
+        if (currentMechanicalArcher != null)
+            Destroy(currentMechanicalArcher);
+        secondTeleporter.SetActive(false);
+        currentMechanicalArcher = Instantiate(mechanicalArcherPrefab, new Vector3(0, 0, 0), Quaternion.identity, arrowBossArena.transform);
+        MechanicalArcher archer = currentMechanicalArcher.GetComponent<MechanicalArcher>();
+        archer.SetPortalReference(secondTeleporter);
+        archer.SetWaypoints(secondBossWaypoints);
+        currentMechanicalArcher.transform.localPosition = secondBossLocalPosition;
+        mechanicalArcherTrigger.GetComponent<EnableObjectWhenPlayerCollides>().ResetGelatinousCube(currentMechanicalArcher);
     }
 }

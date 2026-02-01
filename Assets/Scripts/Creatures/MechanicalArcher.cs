@@ -38,7 +38,7 @@ public class MechanicalArcher : Boss
     [SerializeField]
     private List<GameObject> childrenWithMeshes;
     [SerializeField]
-    private List<ParticleSystem> particles;
+    private GameObject teleporter;
 
     private float attackFloat;
     bool attacking = false;
@@ -130,6 +130,16 @@ public class MechanicalArcher : Boss
         }
     }
 
+    public void SetPortalReference(GameObject portal)
+    {
+        teleporter = portal;
+    }
+
+    public void SetWaypoints(List<Transform> waypoints)
+    {
+        this.waypoints = waypoints;
+    }
+
     internal override void death()
     {
         isAlive = false;
@@ -153,10 +163,11 @@ public class MechanicalArcher : Boss
             Vector3 direction = directions[Random.Range(0, directions.Count)];
             body.AddForce(direction * forceOnDeath);
         }
-        foreach(ParticleSystem system in particles)
+        foreach(ParticleSystem system in arrows)
         {
             system.Stop();
         }
+        teleporter.SetActive(true);
         Invoke("selfDestruct", deleteDelayAfterDeath);
     }
 
