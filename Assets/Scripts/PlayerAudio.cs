@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private List<AudioClip> fallLanding;
+    [SerializeField]
+    private List<AudioClip> hurt;
 
-    // Update is called once per frame
-    void Update()
+    public void PlayAudio(PlayerAudioType type)
     {
-        
+
     }
 }

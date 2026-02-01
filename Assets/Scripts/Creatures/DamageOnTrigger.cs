@@ -6,16 +6,10 @@ public class DamageOnTrigger : MonoBehaviour
 {
     public int damage = 5;
 
-    void Start()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Boss") {
-            other.GetComponent<Boss>().health -= damage;
-            other.GetComponent<Boss>().UpdateHealthByValue(damage);
+        if (other.tag == "Boss" || other.tag == "Object") {
+            other.GetComponent<Creature>().UpdateHealthByValue(damage);
         }
     }
 }
