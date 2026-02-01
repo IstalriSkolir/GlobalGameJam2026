@@ -8,6 +8,13 @@ public class EnableObjectWhenPlayerCollides : MonoBehaviour
     private GameObject gelatinousCube;
     [SerializeField]
     private bool isCubeActive;
+    [SerializeField]
+    private MusicManager music;
+
+    private void Start()
+    {
+        //music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
+    }
 
     void OnTriggerEnter(Collider other)
     {

@@ -25,8 +25,13 @@ public abstract class Boss : Creature
 
     internal virtual void Start()
     {
-        music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
-        music.UpdateMusicMode(MusicMode.Battle);
+        GameObject musicObj = GameObject.FindGameObjectWithTag("MusicManager");
+        if (musicObj != null)
+        {
+            music = musicObj.GetComponent<MusicManager>();
+            if (music.CurrentMode != MusicMode.Battle)
+                music.UpdateMusicMode(MusicMode.Battle);
+        }
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
     }
