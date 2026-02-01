@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fd35790e3979b45ade815e57402b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCreatures: 0
+  targetCreatures: 1
   healthTick: 0.1
   healthChange: 2
   damageTargets: 1

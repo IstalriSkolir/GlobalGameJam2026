@@ -33,6 +33,8 @@ public class DamageOverTime : MonoBehaviour
             creaturesInRange.Add(other.GetComponent<Creature>());
         else if (other.tag == "Player" && (targetCreatures == CreatureType.Player || targetCreatures == CreatureType.All))
             creaturesInRange.Add(other.GetComponent<Creature>());
+        else if (other.tag == "Object" && (targetCreatures == CreatureType.Object || targetCreatures == CreatureType.All))
+            creaturesInRange.Add(other.GetComponent<Creature>());
     }
 
     private void OnTriggerExit(Collider other)
@@ -40,6 +42,8 @@ public class DamageOverTime : MonoBehaviour
         if (other.tag == "Boss" && (targetCreatures == CreatureType.Boss || targetCreatures == CreatureType.All))
             creaturesInRange.Remove(other.GetComponent<Creature>());
         else if (other.tag == "Player" && (targetCreatures == CreatureType.Player || targetCreatures == CreatureType.All))
+            creaturesInRange.Remove(other.GetComponent<Creature>());
+        else if (other.tag == "Object" && (targetCreatures == CreatureType.Object || targetCreatures == CreatureType.All))
             creaturesInRange.Remove(other.GetComponent<Creature>());
     }
 }

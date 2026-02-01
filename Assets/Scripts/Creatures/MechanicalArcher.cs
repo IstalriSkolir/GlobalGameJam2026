@@ -182,6 +182,7 @@ public class MechanicalArcher : Boss
     {
         base.UpdateHealthByValue(change, decrease);
         state = State.Searching_For_Waypoint;
+        animator.SetTrigger("TakeDamage");
     }
 
     private Vector3 getNewWaypoint()
