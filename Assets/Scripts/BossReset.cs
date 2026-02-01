@@ -59,9 +59,9 @@ public class BossReset : MonoBehaviour
         playerMaxHealth = playerHealth.MaxHealth;
     }
 
-    public void UpdatePlayerRespawnLocation(Vector3 newRespawn)
+    public void UpdatePlayerRespawnLocation(Transform newRespawn)
     {
-        playerRespawnLocation = newRespawn;
+        playerRespawnLocation = newRespawn.position;
     }
 
     public void ResetBosses()

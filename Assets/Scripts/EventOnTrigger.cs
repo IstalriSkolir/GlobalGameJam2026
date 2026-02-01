@@ -7,13 +7,17 @@ public class EventOnTrigger : MonoBehaviour
 {
 
     public UnityEvent m_MyEvent;
+    public bool destroyOnEnter = true;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             m_MyEvent.Invoke();
-            Destroy(gameObject);
+            if (destroyOnEnter)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
