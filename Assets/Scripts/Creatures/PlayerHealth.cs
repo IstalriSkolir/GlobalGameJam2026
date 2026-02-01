@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : Creature
 {
@@ -14,6 +15,8 @@ public class PlayerHealth : Creature
     private float regenTick;
     [SerializeField]
     private int regenValue;
+
+    public CanvasGroup healthUI;
 
     [SerializeField, Header("Player Health Gameobjects & Components")]
     private PlayerController playerController;
@@ -44,6 +47,8 @@ public class PlayerHealth : Creature
                 UpdateHealthByValue(regenValue, false);
             }
         }
+
+        healthUI.alpha = 1 - (health * 0.01f);
     }
 
     internal override void death()
