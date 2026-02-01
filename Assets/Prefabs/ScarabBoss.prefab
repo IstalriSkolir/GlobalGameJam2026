@@ -5156,8 +5156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creatureType: 1
-  health: 120
-  maxHealth: 120
+  health: 80
+  maxHealth: 80
   agent: {fileID: 7420522683803802087}
   animator: {fileID: 1030796751541670348}
   audio: {fileID: 0}
@@ -7245,7 +7245,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
