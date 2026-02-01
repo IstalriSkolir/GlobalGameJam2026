@@ -25,6 +25,8 @@ public class BossReset : MonoBehaviour
     private GameObject mechanicalArcherPrefab;
     [SerializeField]
     private Vector3 secondBossLocalPosition;
+    [SerializeField]
+    private GameObject secondTeleporter;
 
     private void Start()
     {
