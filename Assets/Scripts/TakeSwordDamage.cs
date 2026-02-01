@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TakeSwordDamage : Creature
 {
@@ -8,6 +9,8 @@ public class TakeSwordDamage : Creature
     private GameObject deathEffectPrefab;
     [SerializeField]
     private GameObject swordFlames;
+
+    public UnityEvent m_MyEvent;
 
     private void Start()
     {
@@ -20,8 +23,24 @@ public class TakeSwordDamage : Creature
             base.UpdateHealthByValue(change, decrease);
     }
 
+    void Update()
+    {
+        if (swordFlames == null)
+        {
+            try
+            {
+                swordFlames = GameObject.FindGameObjectWithTag("SwordFlames");
+            }
+            catch {
+                
+            }
+        }
+    }
+
     internal override void death()
     {
+        m_MyEvent.Invoke();
+
         if (deathEffectPrefab != null)
             Instantiate(deathEffectPrefab, transform.position, deathEffectPrefab.transform.rotation);
         Destroy(gameObject);
